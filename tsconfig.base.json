@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@m11r/colleagues": ["libs/colleagues/src/index.ts"],
+      "@m11r/colleagues-list": ["libs/colleagues-list/src/index.ts"],
       "@m11r/email-service": ["libs/email-service/src/index.ts"]
     },
     "noUnusedLocals": false,
