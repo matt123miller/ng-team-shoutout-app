@@ -1,0 +1,22 @@
+<figure class="bg-gray-100 shadow-md space-y-2 py-4 flex items-center space-y-0 space-x-6">
+  <img class="block mx-auto object-cover h-24 sm:mx-0 sm:flex-shrink-0" src="https://via.placeholder.com/150"
+    alt="Woman's Face">
+  <div class="text-left space-y-0.5 sm:grid grid-cols-4 w-full">
+
+    <div class="col-span-3 overflow-x-hidden">
+      <p class="text-lg text-black font-semibold">
+        {{colleague.name}}
+      </p>
+      <p class="text-gray-500 font-medium">
+        {{colleague.department}} - {{colleague.role}}
+      </p>
+      <p>
+        <a class="" [href]="'mailto:' + colleague.email">{{colleague.email}}</a>
+      </p>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" (click)="openDialog($event)">Nominate</button>
+    </div>
+  </div>
+</figure>
+<mat-divider></mat-divider>
