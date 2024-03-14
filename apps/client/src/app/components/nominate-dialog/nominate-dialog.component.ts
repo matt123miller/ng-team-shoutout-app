@@ -1,16 +1,21 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Colleague } from 'src/app/interfaces/colleague';
-import { Nomination } from 'src/app/interfaces/nomination';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogContent,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { Colleague } from '@app/types/colleague';
+import { Nomination } from '@app/types/nomination';
 
 @Component({
+  standalone: true,
+  imports: [MatDialogContent, ReactiveFormsModule],
   selector: 'nominate-dialog',
   templateUrl: './nominate-dialog.component.html',
   styleUrls: ['./nominate-dialog.component.scss'],
 })
 export class NominateDialogComponent {
-
   valuesForm: FormGroup;
   dialogRef: MatDialogRef<NominateDialogComponent, Nomination>;
 
@@ -35,9 +40,9 @@ export class NominateDialogComponent {
     {
       id: 'EveryPebbleMatters',
       title: 'Every Pebble Matters',
-    }
-  ]
-  
+    },
+  ];
+
   constructor(
     dialogRef: MatDialogRef<NominateDialogComponent>,
     fb: FormBuilder,
@@ -59,4 +64,3 @@ export class NominateDialogComponent {
     this.dialogRef.close(this.valuesForm.value);
   }
 }
-

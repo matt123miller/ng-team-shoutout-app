@@ -5,10 +5,15 @@
       {{colleague.department}} - {{colleague.role}}
     </p>
 
-    <div *ngFor="let item of companyValues; let i=index">
+    @for (item of companyValues; track item.id) {
+    <div>
       <input type="checkbox" name="ChosenValues" [formControlName]="item.id" [id]="item.id">
       <label [for]="item.id">{{item.title}}</label>
     </div>
+    }
+    @empty {
+    <p>Company values failed to load</p>
+    }
     <textarea class="text-black" type="text" formControlName="Reason" name="Reason" id="Reason">
     </textarea>
   </mat-dialog-content>

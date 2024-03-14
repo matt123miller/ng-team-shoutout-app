@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
+import { MatDivider } from '@angular/material/divider';
 import { NominateDialogComponent } from '@app/components/nominate-dialog/nominate-dialog.component';
 import { type Colleague } from '@app/types/colleague';
 import { Nomination } from '@app/types/nomination';
 @Component({
+  standalone: true,
+  imports: [MatDivider],
   selector: 'colleague',
   templateUrl: './colleague.component.html',
   styleUrls: ['./colleague.component.scss'],
