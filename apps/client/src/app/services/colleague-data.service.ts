@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import ColleagueFactory from '../factories/colleague';
 import { Colleague } from '../types/colleague';
 
@@ -6,11 +7,7 @@ import { Colleague } from '../types/colleague';
   providedIn: 'root',
 })
 export class ColleagueDataService {
-  constructor() {}
-
-  getColleagues() {
-    return COLLEAGUES;
-  }
+  colleagues$: Observable<Colleague[]> = of(COLLEAGUES);
 
   getColleague(id: number) {
     return COLLEAGUES.find((e) => e.id === id);
