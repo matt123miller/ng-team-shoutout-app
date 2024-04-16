@@ -1,6 +1,6 @@
 <form [formGroup]="valuesForm">
   <h2 mat-dialog-title>{{colleague.name}}</h2>
-  <mat-dialog-content class="mat-typography">
+  <div class="mat-typography">
     <p>
       {{colleague.department}} - {{colleague.role}}
     </p>
@@ -16,7 +16,7 @@
     }
     <textarea class="text-black" type="text" formControlName="Reason" name="Reason" id="Reason">
     </textarea>
-  </mat-dialog-content>
+  </div>
   <div mat-dialog-actions>
     <button mat-raised-button (click)="submit()">Ok</button>
   </div>

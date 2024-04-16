@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Observable, filter } from 'rxjs';
+
+import { ColleagueComponent } from '@app/components/colleague/colleague.component';
 import { ColleagueDataService } from '@app/services/colleague-data.service';
 import { Colleague } from '@app/types/colleague';
-import { Observable, filter } from 'rxjs';
-import { ColleagueComponent } from '../colleague/colleague.component';
 
 @Component({
   standalone: true,
