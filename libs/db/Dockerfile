@@ -50,7 +50,7 @@ RUN adduser \
 USER appuser
 
 # Copy the executable from the "build" stage.
-COPY --from=build /bin/hello.sh /bin/
+# COPY --from=build /bin/hello.sh /bin/
 
 # What the container should run when it is started.
-ENTRYPOINT [ "/bin/hello.sh" ]
+# ENTRYPOINT [ "/bin/hello.sh" ]

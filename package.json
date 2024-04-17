@@ -2,6 +2,7 @@
   "name": "@m11r/root",
   "version": "0.0.1",
   "license": "MIT",
+  "module": "es2022",
   "scripts": {
     "serve:all": "nx run-many --all --target=serve",
     "build:all": "nx run-many --all --target=build",
@@ -43,6 +44,7 @@
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "autoprefixer": "^10.4.0",
+    "bson-ext": "^4.0.3",
     "cypress": "^13.0.0",
     "esbuild": "^0.19.12",
     "eslint": "8.48.0",
@@ -53,6 +55,7 @@
     "jest-environment-node": "^29.4.1",
     "jest-preset-angular": "13.1.6",
     "jsonc-eslint-parser": "^2.1.0",
+    "mongodb": "^6.5.0",
     "nx": "18.0.8",
     "postcss": "^8.4.5",
     "prettier": "^2.6.2",
