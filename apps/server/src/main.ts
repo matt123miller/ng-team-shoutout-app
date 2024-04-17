@@ -3,27 +3,34 @@
  * This is only a minimal backend to get started.
  */
 
-import { colleaguesList } from '@m11r/colleagues-list';
 import express from 'express';
 import * as path from 'path';
 
-const app = express();
+import { createDb, getAllColleagues } from '@m11r/db';
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+(async () => {
+  const db = await createDb();
+  const app = express();
+  app.dbClient = db;
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to server!' });
-});
+  app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-app.get('/api/colleagues', (req, res) => {
-  res.json({
-    data: colleaguesList(),
+  app.get('/api', (req, res) => {
+    res.send({ message: 'Welcome to server!' });
   });
-});
 
-// const port = process.env.PORT || 3333;
-const port = 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+  app.get('/api/colleagues', async (req, res) => {
+    const colleagues = await getAllColleagues(req.app.dbClient);
+    res.json({
+      data: colleagues,
+    });
+  });
+
+  // const port = process.env.PORT || 3333;
+  const port = 3333;
+  const server = app.listen(port, () => {
+    console.log(`Listening at http://localhost:${port}/api`);
+  });
+
+  server.on('error', console.error);
+})();
