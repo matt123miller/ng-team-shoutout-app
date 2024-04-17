@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { Observable, filter } from 'rxjs';
+import { Component, OnInit, signal } from '@angular/core';
 
 import { ColleagueComponent } from '@app/components/colleague/colleague.component';
 import { ColleagueDataService } from '@app/services/colleague-data.service';
@@ -14,12 +12,14 @@ import { Colleague } from '@app/types/colleague';
   styleUrls: ['./colleagues-list.component.scss'],
 })
 export class ColleaguesListComponent implements OnInit {
-  colleagues$: Observable<Colleague[]> =
-    this.colleagueDataService.colleagues$.pipe(
-      filter((colleagues) => !!colleagues)
-    );
+  colleagues$ = this.colleagueDataService.getAll().subscribe({
+    next: (res) => {
+      console.log('ColleaguesListComponent.colleagues$', res);
+      this.colleagues.set(res.data);
+    },
+  });
 
-  colleagues = toSignal(this.colleagues$, { initialValue: [] });
+  colleagues = signal<Colleague[]>([]);
 
   // I want to implement a text search of the colleagues
   // I found a yt video that covers it (poor audio though)
