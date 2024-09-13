@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'team-shoutout-frontend',
+  displayName: 'material-lab',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/apps/team-shoutout/frontend',
+  coverageDirectory: '../../../coverage/apps/material-lab/material-lab',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

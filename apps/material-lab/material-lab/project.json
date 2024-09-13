@@ -1,0 +1,78 @@
+{
+  "name": "material-lab",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "m11r",
+  "sourceRoot": "apps/material-lab/material-lab/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/material-lab/material-lab",
+        "index": "apps/material-lab/material-lab/src/index.html",
+        "browser": "apps/material-lab/material-lab/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/material-lab/material-lab/tsconfig.app.json",
+        "assets": [
+          "apps/material-lab/material-lab/src/favicon.ico",
+          "apps/material-lab/material-lab/src/assets"
+        ],
+        "styles": ["apps/material-lab/material-lab/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "material-lab:build:production"
+        },
+        "development": {
+          "buildTarget": "material-lab:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "material-lab:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/material-lab/material-lab/jest.config.ts"
+      }
+    }
+  }
+}
