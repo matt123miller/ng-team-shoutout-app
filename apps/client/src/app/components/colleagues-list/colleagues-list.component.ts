@@ -26,9 +26,7 @@ export class ColleaguesListComponent implements OnInit {
   // https://www.youtube.com/watch?v=9RWPQ-cx8Uk
   // should extract the search bar into a separate component, maybe a service for the logic?
 
-  constructor(private colleagueDataService: ColleagueDataService) {
-    // this.colleagues$ =
-  }
+  constructor(private colleagueDataService: ColleagueDataService) {}
 
   ngOnInit(): void {
     console.log('ColleaguesListComponent.ngOnInit');
