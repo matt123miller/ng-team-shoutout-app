@@ -1,0 +1,54 @@
+{
+  "name": "team-shoutout-backend",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/team-shoutout/backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/team-shoutout/backend",
+        "main": "apps/team-shoutout/backend/src/main.ts",
+        "tsConfig": "apps/team-shoutout/backend/tsconfig.app.json",
+        "assets": ["apps/team-shoutout/backend/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/team-shoutout/backend/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "team-shoutout-backend:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "team-shoutout-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "team-shoutout-backend:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/team-shoutout/backend/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

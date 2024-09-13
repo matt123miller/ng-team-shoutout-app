@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@m11r/colleagues-list": ["libs/colleagues-list/src/index.ts"],
-      "@m11r/db": ["libs/db/src/index.ts"],
+      "@m11r/db": ["libs/db/src/index.ts"]
     },
     "noUnusedLocals": false,
     "noUnusedParameters": false
