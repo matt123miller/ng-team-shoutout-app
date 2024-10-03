@@ -24,4 +24,4 @@ export class ColleagueDataService {
   }
 }
 
-const COLLEAGUES: Colleague[] = ColleagueFactory.buildList(12);
+export const COLLEAGUES: Colleague[] = ColleagueFactory.buildList(12);
