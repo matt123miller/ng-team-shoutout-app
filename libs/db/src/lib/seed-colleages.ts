@@ -20,7 +20,7 @@ export async function seedColleagues(collection: Collection<Colleague>) {
         name: 'Tim Penfold',
         department: 'CFDev',
         role: 'Software Engineering Manager',
-        email: 'jane@pebble.tv',
+        email: 'tim@pebble.tv',
         imagePath: 'https://via.placeholder.com/150',
         nominations: [],
       },

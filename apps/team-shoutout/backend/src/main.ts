@@ -16,7 +16,7 @@ import { createDb, getAllColleagues } from '@m11r/db';
   app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
   app.get('/api', (req, res) => {
-    res.send({ message: 'Welcome to server!' });
+    res.send({ message: 'Welcome to main server!' });
   });
 
   app.get('/api/colleagues', async (req, res) => {
