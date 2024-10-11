@@ -10,7 +10,7 @@ describe('ColleaguesListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ColleaguesListComponent],
+      imports: [ColleaguesListComponent],
       providers: [
         {
           provide: ColleagueDataService,

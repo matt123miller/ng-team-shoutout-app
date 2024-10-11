@@ -1,5 +1,8 @@
 import { provideHttpClient } from '@angular/common/http';
-import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import {
+    HttpTestingController,
+    provideHttpClientTesting,
+} from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { Colleague } from '@app/types/colleague';
@@ -34,15 +37,12 @@ fdescribe('ColleagueDataService', () => {
       role: 'role',
       email: 'email',
       imagePath: 'imagePath',
-    }
-  ]
+    },
+  ];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        provideHttpClient(),    
-        provideHttpClientTesting(),
-      ],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(ColleagueDataService);
     httpTesting = TestBed.inject(HttpTestingController);
@@ -51,18 +51,15 @@ fdescribe('ColleagueDataService', () => {
   afterEach(() => {
     // restore the spy created with spyOn
     jest.restoreAllMocks();
-      // Verify that none of the tests make any extra HTTP requests.
-      TestBed.inject(HttpTestingController).verify();
+    // Verify that none of the tests make any extra HTTP requests.
+    TestBed.inject(HttpTestingController).verify();
   });
-
-  
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
   it('should get all colleagues', async () => {
-
     const getColleagues$ = service.getAll();
     const getColleaguesPromise = firstValueFrom(getColleagues$);
 
@@ -71,6 +68,5 @@ fdescribe('ColleagueDataService', () => {
     req.flush(testColleagues);
 
     expect(await getColleaguesPromise).toEqual(testColleagues);
-
   });
 });
