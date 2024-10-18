@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, signal } from '@angular/core';
 
 import { ColleagueComponent } from '@app/components/colleague/colleague.component';
@@ -6,7 +7,7 @@ import { Colleague } from '@app/types/colleague';
 
 @Component({
   standalone: true,
-  imports: [ColleagueComponent],
+  imports: [ColleagueComponent, HttpClientModule],
   selector: 'colleagues-list',
   templateUrl: './colleagues-list.component.html',
   styleUrls: ['./colleagues-list.component.scss'],

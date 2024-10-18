@@ -1,7 +1,7 @@
-// import { db } from './db';
+import { createDb } from './db';
 
-// describe('db', () => {
-//   it('should work', () => {
-//     expect(db()).toEqual('db');
-//   });
-// });
+describe('db', () => {
+  it('should work', () => {
+    expect(createDb()).toBeDefined();
+  });
+});

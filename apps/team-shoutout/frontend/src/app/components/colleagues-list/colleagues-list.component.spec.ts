@@ -4,6 +4,12 @@ import { ColleagueDataService } from '@app/services/colleague-data.service';
 import { of } from 'rxjs';
 import { ColleaguesListComponent } from './colleagues-list.component';
 
+class ColleagueDataServiceMock {
+  getAll = () => {
+    return of([]);
+  };
+}
+
 describe('ColleaguesListComponent', () => {
   let component: ColleaguesListComponent;
   let fixture: ComponentFixture<ColleaguesListComponent>;
@@ -14,11 +20,7 @@ describe('ColleaguesListComponent', () => {
       providers: [
         {
           provide: ColleagueDataService,
-          useValue: {
-            getAll: () => {
-              return of([]);
-            },
-          },
+          useClass: ColleagueDataServiceMock,
         },
       ],
     }).compileComponents();
