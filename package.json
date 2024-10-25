@@ -86,6 +86,7 @@
     "@faker-js/faker": "^8.4.1",
     "@fastify/autoload": "~5.7.1",
     "@fastify/sensible": "~5.2.0",
+    "@t3-oss/env-core": "^0.11.1",
     "axios": "1.6.7",
     "express": "~4.18.1",
     "fastify": "~4.13.0",
@@ -93,6 +94,7 @@
     "fishery": "^2.2.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "zod": "^3.23.8",
     "zone.js": "0.14.4"
   },
   "packageManager": "pnpm@9.12.0+sha256.a61b67ff6cc97af864564f4442556c22a04f2e5a7714fbee76a1011361d9b726"
