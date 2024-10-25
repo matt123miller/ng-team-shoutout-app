@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@m11r/api.colleague": ["libs/routes/colleagues/src/index.ts"],
       "@m11r/colleagues-list": ["libs/colleagues-list/src/index.ts"],
       "@m11r/db": ["libs/db/src/index.ts"]
     },
