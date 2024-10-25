@@ -6,12 +6,23 @@
 import express from 'express';
 import * as path from 'path';
 
-import { createDb, getAllColleagues } from '@m11r/db';
+import { router as colleaguesRouter } from '@m11r/api.colleague';
+import { getDb } from '@m11r/db';
 
 (async () => {
-  const db = await createDb();
+  const db = await getDb();
   const app = express();
-  app.dbClient = db;
+
+  app.use((req, res, next) => {
+    const locals = {
+      dbClient: db,
+      title: 'Team Shoutout',
+    };
+
+    res.typedLocals = res.locals = locals;
+    app.typedLocals = app.locals = locals;
+    next();
+  });
 
   app.use('/assets', express.static(path.join(__dirname, 'assets')));
 

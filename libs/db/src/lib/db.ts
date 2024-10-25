@@ -1,4 +1,4 @@
-import { Db } from 'mongodb';
+import { Collection, Db } from 'mongodb';
 import { Colleague } from '../types/colleague';
 import { Nomination } from '../types/nomination';
 import { createClient } from './client';
@@ -7,18 +7,29 @@ import { seedNominations } from './seed-nominations';
 
 const dbName = 'team-shoutout';
 
-let db: Db;
+type MongoDb = Db & {
+  colleagues: Collection<Colleague>;
+  nominations: Collection<Nomination>;
+};
 
-export async function createDb() {
+let db: MongoDb;
+
+export async function getDb() {
+  if (!db) {
+    db = await createDb();
+  }
+  return db;
+}
+
+async function createDb(): Promise<MongoDb> {
   const client = await createClient();
 
   const db = client.db(dbName);
 
-  await setup(db);
-  return db;
+  return setup(db);
 }
 
-async function setup(db: Db) {
+async function setup(db: Db): Promise<MongoDb> {
   const colleagues = db.collection<Colleague>('colleagues');
   const nominations = db.collection<Nomination>('nominations');
 
@@ -31,4 +42,7 @@ async function setup(db: Db) {
 
   await seedColleagues(colleagues);
   await seedNominations(nominations);
+
+  // It's nowe been patched with the new values
+  return db as MongoDb;
 }
