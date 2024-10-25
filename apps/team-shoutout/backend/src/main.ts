@@ -19,15 +19,10 @@ import { createDb, getAllColleagues } from '@m11r/db';
     res.send({ message: 'Welcome to main server!' });
   });
 
-  app.get('/api/colleagues', async (req, res) => {
-    const colleagues = await getAllColleagues(req.app.dbClient);
-    res.json({
-      data: colleagues,
-    });
-  });
+  app.use('/api/colleagues', colleaguesRouter);
 
-  // const port = process.env.PORT || 3333;
-  const port = 3333;
+  const port = process.env['PORT'] || 3333;
+
   const server = app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/api`);
   });
