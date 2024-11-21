@@ -40,8 +40,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
-db-date
+db-data
 *.pem
 
-.env*
+.env
 !.env.example
