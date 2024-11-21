@@ -1,0 +1,9 @@
+<p>timer works!</p>
+<div *ngIf="seconds$ | async as seconds; else startTimerBlock">
+  <p>{{ seconds | date }}</p>
+  <button (click)="stopTimer()">Stop timer</button>
+</div>
+<ng-template #startTimerBlock>
+  <p>timer not started</p>
+  <button (click)="startTimer()">Start timer</button>
+</ng-template>

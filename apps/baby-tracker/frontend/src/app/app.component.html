@@ -1,1 +1,17 @@
-<m11r-nx-welcome></m11r-nx-welcome> <router-outlet></router-outlet>
+<div class="container">
+  <h1>Baby Sleep Tracker</h1>
+
+  <m11r-timer-display [time]="currentTimer" />
+
+  <div style="text-align: center">
+    <button *ngIf="!isTracking" class="start" (click)="startTracking()">
+      Start Sleep
+    </button>
+    <button *ngIf="isTracking" class="stop" (click)="stopTracking()">
+      Stop Sleep
+    </button>
+  </div>
+
+  <m11r-sleep-history />
+</div>
+ <router-outlet></router-outlet>
