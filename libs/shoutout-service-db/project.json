@@ -1,0 +1,30 @@
+{
+  "name": "shoutout-service-db",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shoutout-service-db/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shoutout-service-db",
+        "tsConfig": "libs/shoutout-service-db/tsconfig.lib.json",
+        "packageJson": "libs/shoutout-service-db/package.json",
+        "main": "libs/shoutout-service-db/src/index.ts",
+        "assets": ["libs/shoutout-service-db/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/shoutout-service-db/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
