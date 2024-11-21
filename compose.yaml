@@ -8,6 +8,18 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 services:
+  team-shoutout-db:
+    container_name: 'team-shoutout-db'
+    image: postgres:16.2
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_DB_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_DB_USER}
+      - POSTGRES_DB=${POSTGRES_DB_NAME}
+    ports:
+      - ${POSTGRES_DB_PORT}:5432
+    volumes:
+      - ./db-data/postgres:/var/lib/postgresql/data
+
   # mongodb container
   mongo_db:
     container_name: db_container
@@ -16,7 +28,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./mongo_db:/data/db
+      - ./db-data/mongo:/data/db
 
     # build:
     #   context: .
@@ -61,3 +73,4 @@ services:
     #     file: db/password.txt
 volumes:
   mongo_db:
+  team-shoutout-db:

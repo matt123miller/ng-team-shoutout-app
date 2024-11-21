@@ -40,5 +40,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
-mongo_db
+db-date
 *.pem
+
+.env*
+!.env.example
